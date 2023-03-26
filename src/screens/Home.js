@@ -11,7 +11,7 @@ export default function Home() {
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
-        let response = await fetch("http://localhost:5000/api/fooddata", {
+        let response = await fetch(process.env.REACT_APP_API_URL +  "/fooddata", {
             method: "post",
             headers: {
                 'content-Type': 'application/json'
@@ -67,9 +67,9 @@ export default function Home() {
 
                 <div>
                     {
-                        foodCat !== [] ? foodCat.map((data) => {
+                        foodCat !== [] ? foodCat.map((data,i) => {
                             return (
-                                <div className='row mb-3'>
+                                <div key={i} className='row mb-3'>
                                     <div key={data.id} className="fs-2 fst-italic m-3">
                                         {data.CategoryName}
                                     </div>
