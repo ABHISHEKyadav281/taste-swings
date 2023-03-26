@@ -7,7 +7,7 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    const res = await fetch("http://localhost:5000/api/myorder", {
+    const res = await fetch(process.env.REACT_APP_API_URL+"/myorder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
