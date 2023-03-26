@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const port = 5000;
-
+const cookieParser = require("cookie-parser")
 const mongoDB = require('./db')
 mongoDB();
 
@@ -27,6 +27,7 @@ app.use(
     })
 );
 app.use(express.json());
+app.use(cookieParser())
 app.use('/api', require('./Routes/CreateUsers'));
 app.use('/api', require('./Routes/DisplayData'));
 app.use('/api', require('./Routes/OrderData'));
