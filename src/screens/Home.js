@@ -11,10 +11,14 @@ export default function Home() {
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
-        let { data } = await Axios.post("/fooddata");
-        // console.log(response[0],response[1]);
-        setFoodItem(data[0]);
-        setFoodCat(data[1]);
+        try{
+            let { data } = await Axios.post("/fooddata");
+            // console.log(response[0],response[1]);
+            setFoodItem(data[0]);
+            setFoodCat(data[1]);
+        }catch(err){
+            console.log(err);
+        }
 
     }
     useEffect(() => {
