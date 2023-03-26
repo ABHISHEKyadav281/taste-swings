@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card';
-
+import Axios from "../components/Axios"
 export default function Home() {
 
 
@@ -11,16 +11,10 @@ export default function Home() {
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
-        let response = await fetch(`${process.env.REACT_APP_API_URL}/fooddata`, {
-            method: "post",
-            headers: {
-                'content-Type': 'application/json'
-            }
-        });
-        let res = await response.json();
+        let { data } = await Axios.post("/fooddata");
         // console.log(response[0],response[1]);
-        setFoodItem(res[0]);
-        setFoodCat(res[1]);
+        setFoodItem(data[0]);
+        setFoodCat(data[1]);
 
     }
     useEffect(() => {
@@ -32,7 +26,7 @@ export default function Home() {
 
     return (
         <div>
-            <div className='fs-4' style={{width:"100%"}}>
+            <div className='fs-4' style={{ width: "100%" }}>
 
                 <div> <Navbar /> </div>
                 <div>
@@ -45,13 +39,13 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="carousel-item active">
-                                <img src="https://source.unsplash.com/random/300×700/?burger" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill",objectPosition:"center" }} alt="..." />
+                                <img src="https://source.unsplash.com/random/300×700/?burger" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
-                                <img src="https://source.unsplash.com/random/300×700/?momos" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill" ,objectPosition:"center"}} alt="..." />
+                                <img src="https://source.unsplash.com/random/300×700/?momos" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
-                                <img src="https://source.unsplash.com/random/300×700/?paneer" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill",objectPosition:"center" }} alt="..." />
+                                <img src="https://source.unsplash.com/random/300×700/?paneer" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
@@ -67,7 +61,7 @@ export default function Home() {
 
                 <div>
                     {
-                        foodCat !== [] ? foodCat.map((data,i) => {
+                        foodCat !== [] ? foodCat.map((data, i) => {
                             return (
                                 <div key={i} className='row mb-3'>
                                     <div key={data.id} className="fs-2 fst-italic m-3">
