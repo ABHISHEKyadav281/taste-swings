@@ -17,10 +17,10 @@ export default function Home() {
                 'content-Type': 'application/json'
             }
         });
-        response = await response.json();
+        let res = await response.json();
         // console.log(response[0],response[1]);
-        setFoodItem(response[0]);
-        setFoodCat(response[1]);
+        setFoodItem(res[0]);
+        setFoodCat(res[1]);
 
     }
     useEffect(() => {
