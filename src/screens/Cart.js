@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
-import Axios from "axios";
+import Axios from "../components/Axios"
 
 export default function Cart() {
   let data = useCart();
