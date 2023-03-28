@@ -4,19 +4,17 @@ import Footer from '../components/Footer'
 import Card from '../components/Card';
 import Axios from "../components/Axios"
 export default function Home() {
-
-
     const [search, setSearch] = useState('');
     const [foodCat, setFoodCat] = useState([]);
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
         try{
-            let { data } = await Axios.post("/fooddata");
+            let {data} = await Axios.get("/fooddata");
             // console.log(response[0],response[1]);
-            console.log(data);
-            setFoodItem(data.data);
-            setFoodCat(data.data1);
+            console.log(data,data?.category);
+            setFoodItem(data.items);
+            setFoodCat(data.category);
         }catch(err){
             console.log(err);
         }
