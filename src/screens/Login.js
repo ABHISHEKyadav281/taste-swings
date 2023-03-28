@@ -9,10 +9,10 @@ export default function Login() {
 let navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await Axios.post("/login", {
+    let resp = await Axios.post("/login", {
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
-    const json = await response.json();
+    let json = await resp.json();
     console.log(json);
 
     if (!json.success) {
