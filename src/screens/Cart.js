@@ -1,6 +1,7 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
+import Axios from "axios";
 
 export default function Cart() {
   let data = useCart();
@@ -17,11 +18,7 @@ export default function Cart() {
     try {
       let userEmail = localStorage.getItem("userEmail");
       console.log(userEmail);
-      let response = await fetch(process.env.REACT_APP_API_URL+"/orderData", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+      let response = await Axios.post("/orderData", {
         body: JSON.stringify({
           order_data: data,
           email: userEmail,
@@ -77,7 +74,7 @@ export default function Cart() {
                 <td>
                   <button type="button" className="btn p-0">
                     <img src={trash} alt="delete" onClick={() => { 
-                        dispatch({ type: "Remove", index: index }); }} style={{height:"15px"}}/>
+                        dispatch({ type: "Remove", index:index }); }} style={{height:"15px"}}/>
                   </button>{" "}
                 </td>
               </tr>

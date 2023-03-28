@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { Axios } from 'axios';
 
 
 export default function Signup() {
@@ -10,11 +11,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(process.env.REACT_APP_API_URL+"/register", {
-      method: "post",
-      headers: {
-        'content-Type': 'application/json'
-      },
+    const response = await Axios.post("/register", {
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.location })
     });
     const json = await response.json();
@@ -24,11 +21,7 @@ export default function Signup() {
       alert("invalid credentials")
     }
     else {
-      const response = await fetch(process.env.REACT_APP_API_URL+"/login", {
-        method: "post",
-        headers: {
-          'content-Type': 'application/json'
-        },
+      const response = await Axios.post("/login", {
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       });
       const json = await response.json();

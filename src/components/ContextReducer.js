@@ -9,7 +9,9 @@ switch(action.type){
         return[...state,{id:action.id, name: action.name, qty: action.qty, size: action.size,  price:action.price,img:action.img}]
     
     case "Remove":
-        return [...state].splice(action.index,1)
+        let arr1=[...state]
+        arr1=arr1.splice(action.index,1)
+        return arr1
     
      case "Update":
            let arr= [...state]
