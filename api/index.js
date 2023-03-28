@@ -21,7 +21,7 @@ app.use(
     require("cors")({
         origin: [
             "https://taste-swings.vercel.app",
-            "http://localhost:3000",
+            "http://localhost:5000",
         ],
         credentials: true,
     })
