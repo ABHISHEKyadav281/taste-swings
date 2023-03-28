@@ -11,7 +11,11 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await Axios.post("/register", {
+    const response = await fetch("http://localhost:5000/api/register", {
+      method: "post",
+      headers: {
+        'content-Type': 'application/json'
+      },
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.location })
     });
     const json = await response.json();
@@ -21,7 +25,11 @@ export default function Signup() {
       alert("invalid credentials")
     }
     else {
-      const response = await Axios.post("/login", {
+      const response = await fetch("http://localhost:5000/api/login", {
+        method: "post",
+        headers: {
+          'content-Type': 'application/json'
+        },
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       });
       const json = await response.json();

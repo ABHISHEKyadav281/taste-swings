@@ -8,7 +8,11 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    const res = await Axios.post("/myorder", {
+    const res = await fetch("http://localhost:5000/api/myorder", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         email: localStorage.getItem("userEmail"),
       }),

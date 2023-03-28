@@ -2,17 +2,21 @@ import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Axios from "../components/Axios"
+// import Axios from "../components/Axios"
 
 export default function Login() {
   const [credentials, setcredentials] = useState({ email: "", password: "" })
-let navigate=useNavigate();
+  let navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    let resp = await Axios.post("/login", {
+    const response = await fetch("http://localhost:5000/api/login", {
+      method: "post",
+      headers: {
+        'content-Type': 'application/json'
+      },
       body: JSON.stringify({ email: credentials.email, password: credentials.password })
     });
-    let json = await resp.json();
+    const json = await response.json();
     console.log(json);
 
     if (!json.success) {
@@ -25,6 +29,7 @@ let navigate=useNavigate();
       // console.log(localStorage.getItem("authToken"));
     navigate('/');
   }
+
 
   }
   const onChange = (event) => {
