@@ -9,13 +9,13 @@ export default function Home() {
     const [foodItem, setFoodItem] = useState([]);
 
     const loadData = async () => {
-        try{
-            let {data} = await Axios.get("/fooddata");
+        try {
+            let { data } = await Axios.get("/fooddata");
             // console.log(response[0],response[1]);
-            console.log(data,data?.category);
+            console.log(data, data?.category);
             setFoodItem(data.items);
             setFoodCat(data.category);
-        }catch(err){
+        } catch (err) {
             console.log(err);
         }
 
@@ -63,30 +63,34 @@ export default function Home() {
                 </div>
 
                 <div>
-                    {
-                        foodCat !== [] ? foodCat.map((data, i) => {
+                    {foodCat?.map((data, i) =>{
                             return (
                                 <div key={i} className='row mb-3'>
                                     <div key={data.id} className="fs-2 fst-italic m-3">
                                         {data.CategoryName}
                                     </div>
-                                    <hr />
-                                    {foodItem !== [] ? foodItem.filter(
-                                        (item) => (item.CategoryName === data.CategoryName) && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
-                                        .map((filterItems) => {
-                                            return (
-                                                <div key={filterItems._id} className="col-12 col-md-6 col-lg-4">
-                                                    <Card
-                                                        foodItem={filterItems}
-                                                        options={filterItems.options[0]}
-                                                    ></Card>
-                                                </div>
-                                            )
-                                        })
-                                        : <div>No Such Data </div>}
+                                    <hr/>
+                                    {foodItem !== [] ?( foodItem?.filter(
+                                        (item) => (item.CategoryName === data.CategoryName) &&
+                                         item.name.toLowerCase().includes(search.toLocaleLowerCase())
+                                    )
+                                            .map((filterItems) => {
+                                                return (
+                                                    <div key={filterItems._id}
+                                                     className="col-12 col-md-6 col-lg-4">
+                                                        <Card
+                                                            foodItem={filterItems}
+                                                            options={filterItems.options[0]}
+                                                        ></Card>
+                                                    </div>
+                                                );
+                                            })
+                                    ) : (
+                                    <div>No Such Data </div>
+                                    )}
                                 </div>
-                            )
-                        }) : ""
+                            );
+                         })
                     }
 
                 </div>
