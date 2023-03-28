@@ -45,7 +45,7 @@ export default function Home() {
                                 <img src="https://source.unsplash.com/random/300×700/?burger" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
-                                <img src="https://source.unsplash.com/random/300×700/?momos" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
+                                <img src="https://source.unsplash.com/random/300×700/?pizza" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
                                 <img src="https://source.unsplash.com/random/300×700/?paneer" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />

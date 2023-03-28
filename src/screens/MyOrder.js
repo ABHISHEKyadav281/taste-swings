@@ -8,7 +8,7 @@ export default function MyOrder() {
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    const res = await fetch("http://localhost:5000/api/myorder", {
+    const res = await fetch(REACT_APP_API_URL+"/myorder", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,9 +36,9 @@ export default function MyOrder() {
             ? Array(orderData).map((data) => {
               return data.orderData
                 ? data.orderData.order_data.slice(0).reverse().map((item) => {
-                  return item.map((arrayData) => {
+                  return  item.map((arrayData) => {
                     return (
-                      <div>
+                      <div> 
                         {arrayData.order_date ? (
                           <div className="m-auto mt-5">
                             <h3> {arrayData.order_date}</h3>

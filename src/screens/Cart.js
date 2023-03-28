@@ -1,7 +1,7 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
-import Axios from "../components/Axios"
+// import Axios from "../components/Axios"
 
 export default function Cart() {
   let data = useCart();
@@ -18,7 +18,7 @@ export default function Cart() {
     try {
       let userEmail = localStorage.getItem("userEmail");
       console.log(userEmail);
-      let response = await fetch("http://localhost:5000/api/orderData", {
+      let response = await fetch(REACT_APP_API_URL+"/orderData", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -67,17 +67,17 @@ export default function Cart() {
             </tr>
           </thead>
           <tbody>   
-            {data.map((food, index) => (
-              <tr key={index}>
-                <th scope="row">{index + 1}</th>
+            {data.map((food, indexx) => (
+              <tr key={indexx}>
+                <th scope="row">{indexx + 1}</th>
                 <td>{food.name}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
                 <td>{food.price}</td>
                 <td>
-                  <button type="button" className="btn p-0">
+                 <button type="button" className="btn p-0">
                     <img src={trash} alt="delete" onClick={() => { 
-                        dispatch({ type: "Remove", index:index }); }} style={{height:"15px"}}/>
+                        dispatch({ type: "Remove", index: indexx }); }} style={{height:"15px"}}/>
                   </button>{" "}
                 </td>
               </tr>

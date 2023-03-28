@@ -10,6 +10,7 @@ switch(action.type){
     
     case "Remove":
         let arr1=[...state]
+        console.log(action.index)
         arr1=arr1.splice(action.index,1)
         return arr1
     
