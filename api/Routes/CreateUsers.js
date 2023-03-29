@@ -35,6 +35,7 @@ router.post('/register',
 
 
 router.post('/login', async (req, res) => {
+    res.send("login page")
     try {
         let user = await User.findOne({ email: req.body.email })
         if (user == null) {
