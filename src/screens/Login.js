@@ -3,13 +3,14 @@ import { Link,useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 // import Axios from "../components/Axios"
+const baseURL= process.env.REACT_APP_API_URL;
 
 export default function Login() {
   const [credentials, setcredentials] = useState({ email: "", password: "" })
   let navigate=useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(`${REACT_APP_API_URL}/login`, {
+    const response = await fetch(`${baseURL}/login`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'

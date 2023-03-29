@@ -35,7 +35,7 @@ router.post('/register',
 
 
 router.post('/login', async (req, res) => {
-    res.send("login page")
+    console.log("login page");
     try {
         let user = await User.findOne({ email: req.body.email })
         if (user == null) {
@@ -55,9 +55,10 @@ router.post('/login', async (req, res) => {
                 const authToken=jwt.sign(data,jwtsecret);
                 res.json({ success: true ,"authToken":authToken});
             }
-        }
+        } 
     } catch (error) {
-        console.log(err);
+        console.log("catch error");
+        console.log(error);
         res.json({ success: false });
     }
 })

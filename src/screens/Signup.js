@@ -2,7 +2,8 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
-import Axios from "../components/Axios"
+// import Axios from "../components/Axios"
+const baseURL= process.env.REACT_APP_API_URL;
 
 
 export default function Signup() {
@@ -11,7 +12,7 @@ export default function Signup() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const response = await fetch(REACT_APP_API_URL+"/register", {
+    const response = await fetch(`${baseURL}/register`, {
       method: "post",
       headers: {
         'content-Type': 'application/json'
@@ -25,7 +26,7 @@ export default function Signup() {
       alert("invalid credentials")
     }
     else {
-      const response = await fetch(REACT_APP_API_URL+"/login", {
+      const response = await fetch(`${baseURL}/login`, {
         method: "post",
         headers: {
           'content-Type': 'application/json'

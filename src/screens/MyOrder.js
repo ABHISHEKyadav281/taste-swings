@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import Footer from "../components/Footer";
 import Navbar from "../components/Navbar";
-import Axios from "../components/Axios"
+// import Axios from "../components/Axios"
+const baseURL= process.env.REACT_APP_API_URL;
 
 export default function MyOrder() {
   const [orderData, setOrderData] = useState({});
 
   const fetchMyOrder = async () => {
     console.log(localStorage.getItem("userEmail"));
-    const res = await fetch(REACT_APP_API_URL+"/myorder", {
+    const res = await fetch(`${baseURL}/myorder`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
