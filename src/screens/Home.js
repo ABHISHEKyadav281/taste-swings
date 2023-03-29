@@ -3,10 +3,29 @@ import Navbar from '../components/Navbar'
 import Footer from '../components/Footer'
 import Card from '../components/Card';
 import Axios from "../components/Axios"
+// const baseURL = process.env.REACT_APP_API_URL;
+
 export default function Home() {
     const [search, setSearch] = useState('');
     const [foodCat, setFoodCat] = useState([]);
     const [foodItem, setFoodItem] = useState([]);
+
+    // const loadData = async () => {
+    //     try {
+    //         let { data } = await fetch(`${baseURL}/fooddata`, {
+    //             method: "get",
+    //             headers: {
+    //                 'content-Type': 'application/json'
+    //             }
+    //         });
+    //         // data = await data.json();
+    //         // console.log(response[0],response[1]);
+    //         setFoodItem(data.items);
+    //         setFoodCat(data.category);
+    //     } catch (err) {
+    //         console.log(err);
+    //     }
+    // }
 
     const loadData = async () => {
         try {
@@ -63,34 +82,34 @@ export default function Home() {
                 </div>
 
                 <div>
-                    {foodCat?.map((data, i) =>{
-                            return (
-                                <div key={i} className='row mb-3'>
-                                    <div key={data.id} className="fs-2 fst-italic m-3">
-                                        {data.CategoryName}
-                                    </div>
-                                    <hr/>
-                                    {foodItem !== [] ?( foodItem?.filter(
-                                        (item) => (item.CategoryName === data.CategoryName) &&
-                                         item.name.toLowerCase().includes(search.toLocaleLowerCase())
-                                    )
-                                            .map((filterItems) => {
-                                                return (
-                                                    <div key={filterItems._id}
-                                                     className="col-12 col-md-6 col-lg-4">
-                                                        <Card
-                                                            foodItem={filterItems}
-                                                            options={filterItems.options[0]}
-                                                        ></Card>
-                                                    </div>
-                                                );
-                                            })
-                                    ) : (
-                                    <div>No Such Data </div>
-                                    )}
+                    {foodCat?.map((data, i) => {
+                        return (
+                            <div key={i} className='row mb-3'>
+                                <div key={data.id} className="fs-2 fst-italic m-3">
+                                    {data.CategoryName}
                                 </div>
-                            );
-                         })
+                                <hr />
+                                {foodItem !== [] ? (foodItem?.filter(
+                                    (item) => (item.CategoryName === data.CategoryName) &&
+                                        item.name.toLowerCase().includes(search.toLocaleLowerCase())
+                                )
+                                    .map((filterItems) => {
+                                        return (
+                                            <div key={filterItems._id}
+                                                className="col-12 col-md-6 col-lg-4">
+                                                <Card
+                                                    foodItem={filterItems}
+                                                    options={filterItems.options[0]}
+                                                ></Card>
+                                            </div>
+                                        );
+                                    })
+                                ) : (
+                                    <div>No Such Data </div>
+                                )}
+                            </div>
+                        );
+                    })
                     }
 
                 </div>
