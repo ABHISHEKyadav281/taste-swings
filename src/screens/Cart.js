@@ -18,7 +18,7 @@ export default function Cart() {
   const handleCheckOut = async () => {
     try {
       let userEmail = localStorage.getItem("userEmail");
-      console.log(userEmail);
+      // console.log(userEmail);
       let response = await fetch(`${baseURL}/orderData`, {
         method: "POST",
         headers: {
@@ -36,7 +36,7 @@ export default function Cart() {
       }
   
       let json = await response.json();
-      console.log("order response", json);
+      // console.log("order response", json);
   
       if (json.success) {
         dispatch({ type: "Drop" });

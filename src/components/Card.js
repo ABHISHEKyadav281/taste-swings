@@ -49,8 +49,8 @@ export default function Card(props) {
             <div className="card m-3" style={{backgroundColor:"gainsboro"}} >
                 <img src={props.foodItem.img} className="card-img-top" alt="..." style={{ height: "250px", objectFit: "fill" }}></img>
                 <div className="card-body">
-                    <h5 className="card-title fs-3 fw-bolder">{props.foodItem.name}</h5>
-                    <p className="card-text h6 fw-lighter fst-italic">{props.foodItem.description}</p>
+                    <h5 className="card-title fs-3 fw-bolder " style={{color:"black"}}>{props.foodItem.name}</h5>
+                    <p className="card-text h6 fw-lighter fst-italic"  style={{color:"rgb(31, 34, 36)"}}>{props.foodItem.description}</p>
                     <div className='container w-100'>
                         <select className='m-2 h-100 rounded' onChange={(e) => setQty(e.target.value)}>
                             {Array.from(Array(6), (e, i) => {

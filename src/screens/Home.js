@@ -31,7 +31,7 @@ export default function Home() {
         try {
             let { data } = await Axios.get("/fooddata");
             // console.log(response[0],response[1]);
-            console.log(data, data?.category);
+            // console.log(data, data?.category);
             setFoodItem(data.items);
             setFoodCat(data.category);
         } catch (err) {
