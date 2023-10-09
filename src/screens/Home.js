@@ -10,22 +10,6 @@ export default function Home() {
     const [foodCat, setFoodCat] = useState([]);
     const [foodItem, setFoodItem] = useState([]);
 
-    // const loadData = async () => {
-    //     try {
-    //         let { data } = await fetch(`${baseURL}/fooddata`, {
-    //             method: "get",
-    //             headers: {
-    //                 'content-Type': 'application/json'
-    //             }
-    //         });
-    //         // data = await data.json();
-    //         // console.log(response[0],response[1]);
-    //         setFoodItem(data.items);
-    //         setFoodCat(data.category);
-    //     } catch (err) {
-    //         console.log(err);
-    //     }
-    // }
 
     const loadData = async () => {
         try {

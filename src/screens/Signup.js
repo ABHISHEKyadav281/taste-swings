@@ -2,11 +2,14 @@ import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Axios from "../components/Axios"
 const baseURL= process.env.REACT_APP_API_URL;
 
 
 export default function Signup() {
+  const notifyRegistration = () => toast.info("Registered successfully");
   let navigate = useNavigate();
   const [credentials, setcredentials] = useState({ name: "", email: "", password: "", location: "" })
 
@@ -20,7 +23,7 @@ export default function Signup() {
       body: JSON.stringify({ name: credentials.name, email: credentials.email, password: credentials.password, location: credentials.location })
     });
     const json = await response.json();
-    console.log(json);
+    // console.log(json);
 
     if (!json.success) {
       alert("invalid credentials")
@@ -34,7 +37,7 @@ export default function Signup() {
         body: JSON.stringify({ email: credentials.email, password: credentials.password })
       });
       const json = await response.json();
-      console.log(json);
+      // console.log(json);
 
       if (!json.success) {
         alert("invalid credentials")
@@ -45,6 +48,7 @@ export default function Signup() {
         localStorage.setItem("authToken", json.authToken);
         // console.log(localStorage.getItem("authToken"));
         navigate('/');
+        notifyRegistration();
       }
 
     }
@@ -82,6 +86,7 @@ export default function Signup() {
           <Link to="/login" className="btn btn-danger m-3">Already a user</Link>
         </form>
       </div>
+
       <Footer></Footer>
     </div>
   )

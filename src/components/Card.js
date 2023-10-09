@@ -1,6 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react'
 import { useDispatchCart, useCart } from './ContextReducer';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 export default function Card(props) {
+    const notifyAddToCart = () => toast.success("Added to cart successfully");
     let dispatch = useDispatchCart();
     let data = useCart();
     let options = props.options;
@@ -11,7 +14,7 @@ export default function Card(props) {
 
 
     const handlAddToCart = async () => {
-
+        notifyAddToCart();
         let food = []
         for (const item of data) {
             if (item.id === props.foodItem._id) {

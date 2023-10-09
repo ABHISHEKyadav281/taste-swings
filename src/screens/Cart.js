@@ -1,10 +1,17 @@
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
+
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Axios from "../components/Axios"
 const baseURL= process.env.REACT_APP_API_URL;
 
 export default function Cart() {
+  const notifyOrder = () => toast.success("Order placed successfully", {
+    position: toast.POSITION.TOP_CENTER
+  });
+
   let data = useCart();
 
   let dispatch = useDispatchCart();
@@ -40,7 +47,8 @@ export default function Cart() {
   
       if (json.success) {
         dispatch({ type: "Drop" });
-        alert("Order submitted successfully");
+        notifyOrder();
+        // alert("Order submitted successfully");
       } else {
         alert("An error occurred while submitting the order");
       }
@@ -54,7 +62,7 @@ export default function Cart() {
 
   return (
     <div>
-      {console.log(data)}
+      {/* {console.log(data)} */}
       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
         <table className="table table-hover ">
           <thead className=" text-success fs-4">
@@ -95,7 +103,7 @@ export default function Cart() {
           </button>
         </div>
       </div>
-          
+
     </div>
   );
 }

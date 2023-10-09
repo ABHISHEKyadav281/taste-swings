@@ -35,14 +35,14 @@ router.post('/register',
 
 
 router.post('/login', async (req, res) => {
-    console.log("login page");
+    // console.log("login page");
     try {
         let user = await User.findOne({ email: req.body.email })
         if (user == null) {
             res.json({ success: false , prob:"invalid credentials"});
         }
         else{
-            const pwdcomp= bcrypt.compare(req.body.password , user.password);
+            const pwdcomp = await bcrypt.compare(req.body.password, user.password);
             if (!pwdcomp) {
                 res.json({ success: false , prob:"invalid credentials"});
             }

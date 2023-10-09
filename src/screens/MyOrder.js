@@ -8,7 +8,7 @@ export default function MyOrder() {
   const [orderData, setOrderData] = useState({});
 
   const fetchMyOrder = async () => {
-    console.log(localStorage.getItem("userEmail"));
+    // console.log(localStorage.getItem("userEmail"));
     const res = await fetch(`${baseURL}/myorder`, {
       method: "POST",
       headers: {
@@ -37,9 +37,9 @@ export default function MyOrder() {
             ? Array(orderData).map((data) => {
               return data.orderData
                 ? data.orderData.order_data.slice(0).reverse().map((item) => {
-                  return  item.map((arrayData) => {
+                  return  item.map((arrayData,idx) => {
                     return (
-                      <div> 
+                      <div key={idx}> 
                         {arrayData.order_date ? (
                           <div className="m-auto mt-5">
                             <h3> {arrayData.order_date}</h3>

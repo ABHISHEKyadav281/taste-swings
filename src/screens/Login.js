@@ -2,12 +2,17 @@ import React, { useState } from 'react'
 import { Link,useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 // import Axios from "../components/Axios"
 const baseURL= process.env.REACT_APP_API_URL;
 
 export default function Login() {
   const [credentials, setcredentials] = useState({ email: "", password: "" })
   let navigate=useNavigate();
+  const notifyLogin = () => toast.success("Logged in successfully");
+  const notifyInvalidLogin = () => toast.error("invalid credentials");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     const response = await fetch(`${baseURL}/login`, {
@@ -21,7 +26,7 @@ export default function Login() {
     // console.log(json);
 
     if (!json.success) {
-      alert("invalid credentials")
+      notifyInvalidLogin();
     }
     else{
       localStorage.setItem("userEmail",credentials.email);
@@ -29,6 +34,7 @@ export default function Login() {
       localStorage.setItem("authToken",json.authToken);
       // console.log(localStorage.getItem("authToken"));
     navigate('/');
+    notifyLogin();
   }
 
 
@@ -41,6 +47,7 @@ export default function Login() {
   return (
     <div>
       <Navbar></Navbar>
+
       <div className="container" >
       <div className="container , mt-5" style={{height:"72vh"}}>
         <form onSubmit={handleSubmit}>
