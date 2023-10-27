@@ -4,6 +4,7 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 export default function Card(props) {
     const notifyAddToCart = () => toast.success("Added to cart successfully");
+    const notifyLogin = () => toast.warning("You are not loggedin");
     let dispatch = useDispatchCart();
     let data = useCart();
     let options = props.options;
@@ -14,7 +15,8 @@ export default function Card(props) {
 
 
     const handlAddToCart = async () => {
-        notifyAddToCart();
+        (localStorage.getItem("authToken"))?notifyAddToCart() :notifyLogin()
+       
         let food = []
         for (const item of data) {
             if (item.id === props.foodItem._id) {

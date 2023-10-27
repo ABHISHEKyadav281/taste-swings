@@ -34,8 +34,9 @@ export default function MyOrder() {
       <div className="container" style={{minHeight:"72vh"}}>
         <div className="row">
           {orderData !== {}
-            ? Array(orderData).map((data) => {
-              return data.orderData
+            ? Array(orderData).map((data,didx) => (
+               <div key={didx}>
+             { data.orderData
                 ? data.orderData.order_data.slice(0).reverse().map((item) => {
                   return  item.map((arrayData,idx) => {
                     return (
@@ -76,7 +77,8 @@ export default function MyOrder() {
                   });
                 })
                 : <div style={{width:"100%",height:"72vh",display:"flex",justifyContent:"center",alignItems:"center",fontSize:"2vw"}}> Food you order appear here</div>
-            })
+                }</div>
+            ))
             : ""}
         </div>
       </div>
