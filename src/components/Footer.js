@@ -14,7 +14,7 @@ export default function Footer() {
 
         <ul className="nav col-md-4 justify-content-evenly list-unstyled  d-flex"style={{fontFamily:" Mr Dafoe', cursive"}}>
           <li className="ms-3"><Link className="text-muted text-decoration-none" to="//https://github.com/ABHISHEKyadav281">github</Link></li>
-          <li className="ms-3"><Link className="text-muted text-decoration-none" to="https://www.linkedin.com/in/abhishek-yadav-aab95b202/">linkdin</Link></li>
+          <li className="ms-3"><Link className="text-muted text-decoration-none" to="https://www.linkedin.com/in/abhishek-yadav-aab95b202/">linkedin</Link></li>
         </ul>
         
         <ul className="nav col-md-4 justify-content-center list-unstyled d-flex">
