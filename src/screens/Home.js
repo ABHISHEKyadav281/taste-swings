@@ -45,13 +45,13 @@ export default function Home() {
                                 </div>
                             </div>
                             <div className="carousel-item active">
-                                <img src="https://source.unsplash.com/random/300×700/?burger" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
+                                <img src="https://img.pikbest.com/wp/202401/juicy-and-burger-crispy-fries-plated-on-grey-background-in-3d-render_9789144.jpg!bw700" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
-                                <img src="https://source.unsplash.com/random/300×700/?pizza" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
+                                <img src="https://c4.wallpaperflare.com/wallpaper/1017/647/742/food-pizza-still-life-hd-wallpaper-preview.jpg" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                             <div className="carousel-item">
-                                <img src="https://source.unsplash.com/random/300×700/?paneer" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
+                                <img src="https://t4.ftcdn.net/jpg/08/16/13/27/360_F_816132727_GttNKheh30xescq1LnUC4nr1vZFzL7Yp.jpg" className="d-block w-100" style={{ filter: "brigtness(0%)", objectFit: "fill", objectPosition: "center" }} alt="..." />
                             </div>
                         </div>
                         <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
