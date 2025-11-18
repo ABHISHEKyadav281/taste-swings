@@ -75,7 +75,7 @@ export default function Login() {
   <div>
     <Navbar />
 
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "70vh" }}>
       <div className="card shadow p-4" style={{ width: "380px", borderRadius: "12px" }}>
         <h3 className="text-center mb-4">Login</h3>
 

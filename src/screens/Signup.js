@@ -95,7 +95,7 @@ export default function Signup() {
   <div>
     <Navbar />
 
-    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "20vh" }}>
       <div className="card shadow p-4" style={{ width: "380px", borderRadius: "12px" }}>
         <h3 className="text-center mb-4">Create Account</h3>
 

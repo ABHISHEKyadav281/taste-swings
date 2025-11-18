@@ -34,7 +34,7 @@ export default function Home() {
         <div>
             <div className='fs-4' style={{ width: "100%" }}>
 
-                <div> <Navbar /> </div>
+                <div style={{position:'fixed',width:"100vw",zIndex:"10000"}}> <Navbar /> </div>
                 <div>
                     <div id="carouselExampleCaptions" className="carousel slide crousel-fade" data-bs-ride="carousel">
 

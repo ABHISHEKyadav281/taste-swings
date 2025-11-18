@@ -91,7 +91,9 @@ export default function MyOrder() {
 
   return (
   <div>
+    <div style={{position:'fixed',width:"100vw",zIndex:"10000"}}>
     <Navbar />
+    </div>
 
     {/* Background Gradient */}
     <div

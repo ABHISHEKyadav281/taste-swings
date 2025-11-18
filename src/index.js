@@ -10,7 +10,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <App />
-    <ToastContainer />
+    <ToastContainer
+      position="bottom-right"
+     />
   </React.StrictMode>
 );
 
