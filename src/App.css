@@ -36,3 +36,100 @@
     transform: rotate(360deg);
   }
 }
+
+
+.cart-wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #2a2a2a, #1c1c1c);
+  padding: 40px 0;
+  color: white;
+}
+
+/* Empty Cart */
+.empty-cart {
+  text-align: center;
+  padding-top: 100px;
+  font-size: 2rem;
+  color: #eaeaea;
+  opacity: 0.9;
+}
+
+/* Glass container */
+.table-container {
+  backdrop-filter: blur(14px);
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 18px;
+  padding: 25px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+}
+
+/* Table */
+.glass-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #f0f0f0;
+}
+
+.glass-table thead th {
+  padding: 14px;
+  font-size: 18px;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+.glass-table tbody td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.glass-table tbody tr:hover {
+  background: rgba(255,255,255,0.08);
+  transition: 0.25s;
+}
+
+/* Delete button */
+.delete-btn {
+  background: red;
+  border: none;
+  cursor: pointer;
+}
+
+.delete-btn img {
+  height: 18px;
+  opacity: 0.75;
+  transition: 0.2s;
+}
+
+.delete-btn img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Total price */
+.total-price {
+  margin-top: 15px;
+  font-size: 28px;
+  font-weight: 600;
+  color: #f3f3f3;
+  opacity: 0.95;
+}
+
+/* Check Out Button (soft modern look) */
+.checkout-btn {
+  margin-top: 25px;
+  background: #3b3b3b;
+  padding: 12px 30px;
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 10px;
+  font-size: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.checkout-btn:hover {
+  background: #505050;
+  transform: translateY(-2px);
+}

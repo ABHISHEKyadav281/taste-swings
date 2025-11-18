@@ -44,30 +44,89 @@ export default function Login() {
   }
 
 
+  // return (
+  //   <div>
+  //     <Navbar></Navbar>
+
+  //     <div className="container" >
+  //     <div className="container , mt-5" style={{height:"72vh"}}>
+  //       <form onSubmit={handleSubmit}>
+
+  //         <div className="mb-3">
+  //           <label forhtml="exampleInputEmail1" className="form-label">Email address</label>
+  //           <input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} />
+  //         </div>
+  //         <div className="mb-3">
+  //           <label forhtml="exampleInputPassword1" className="form-label">Password</label>
+  //           <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} />
+
+  //         </div>
+
+  //         <button type="submit" className="btn btn-success m-3">Login</button>
+  //         <Link to="/signup" className=" m-3">Forgot password</Link>
+  //       </form>
+  //     </div>
+  //     </div>
+  //     <Footer></Footer>
+  //   </div>
+  // )
+
   return (
-    <div>
-      <Navbar></Navbar>
+  <div>
+    <Navbar />
 
-      <div className="container" >
-      <div className="container , mt-5" style={{height:"72vh"}}>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "80vh" }}>
+      <div className="card shadow p-4" style={{ width: "380px", borderRadius: "12px" }}>
+        <h3 className="text-center mb-4">Login</h3>
+
         <form onSubmit={handleSubmit}>
-
+          {/* Email */}
           <div className="mb-3">
-            <label forhtml="exampleInputEmail1" className="form-label">Email address</label>
-            <input type="email" className="form-control" name='email' value={credentials.email} onChange={onChange} />
+            <label htmlFor="inputEmail" className="form-label">Email Address</label>
+            <input
+              id="inputEmail"
+              type="email"
+              className="form-control"
+              name="email"
+              value={credentials.email}
+              onChange={onChange}
+              placeholder="you@example.com"
+              required
+            />
           </div>
+
+          {/* Password */}
           <div className="mb-3">
-            <label forhtml="exampleInputPassword1" className="form-label">Password</label>
-            <input type="password" className="form-control" name='password' value={credentials.password} onChange={onChange} />
-
+            <label htmlFor="inputPassword" className="form-label">Password</label>
+            <input
+              id="inputPassword"
+              type="password"
+              className="form-control"
+              name="password"
+              value={credentials.password}
+              onChange={onChange}
+              placeholder="Enter your password"
+              required
+            />
           </div>
 
-          <button type="submit" className="btn btn-success m-3">Login</button>
-          <Link to="/signup" className=" m-3">Forgot password</Link>
+          {/* Login button */}
+          <button type="submit" className="btn btn-success w-100 mt-2">
+            Login
+          </button>
+
+          {/* Extra links */}
+          <div className="text-center mt-3">
+            <Link to="/signup" className="text-decoration-none">
+              Don't have an account? Register
+            </Link>
+          </div>
         </form>
       </div>
-      </div>
-      <Footer></Footer>
     </div>
-  )
+
+    <Footer />
+  </div>
+);
+
 }

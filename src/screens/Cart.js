@@ -1,31 +1,153 @@
+// import React from "react";
+// import { useCart, useDispatchCart } from "../components/ContextReducer";
+// import trash from "../screens/Trash.png";
+
+// import { toast } from 'react-toastify';
+// import 'react-toastify/dist/ReactToastify.css';
+// // import Axios from "../components/Axios"
+// const baseURL= process.env.REACT_APP_API_URL;
+
+// export default function Cart() {
+//   const notifyOrder = () => toast.success("Order placed successfully", {
+//     position: toast.POSITION.TOP_CENTER
+//   });
+
+//   let data = useCart();
+
+//   let dispatch = useDispatchCart();
+//   if (data.length === 0) {
+//     return (
+//       <div>
+//         <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
+//       </div>
+//     );
+//   }
+//   const handleCheckOut = async () => {
+//     try {
+//       let userEmail = localStorage.getItem("userEmail");
+//       // console.log(userEmail);
+//       let response = await fetch(`${baseURL}/orderData`, {
+//         method: "POST",
+//         headers: {
+//           "Content-Type": "application/json",
+//         },
+//         body: JSON.stringify({
+//           order_data: data,
+//           email: userEmail,
+//           order_date: new Date().toDateString(),
+//         }),
+//       });
+  
+//       if (!response.ok) {
+//         throw new Error("Network response was not ok");
+//       }
+  
+//       let json = await response.json();
+//       // console.log("order response", json);
+  
+//       if (json.success) {
+//         dispatch({ type: "Drop" });
+//         notifyOrder();
+//         // alert("Order submitted successfully");
+//       } else {
+//         alert("An error occurred while submitting the order");
+//       }
+//     } catch (error) {
+//       console.log("Error occurred while checking out", error);
+//       alert("An error occurred while submitting the order");
+//     }
+//   };
+
+//   let totalPrice = data.reduce((total, food) => total + food.price, 0);
+
+//   return (
+//     <div>
+//       {/* {console.log(data)} */}
+//       <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
+//         <table className="table table-hover ">
+//           <thead className=" text-success fs-4">
+//             <tr>
+//               <th scope="col">#</th>
+//               <th scope="col">Name</th>
+//               <th scope="col">Quantity</th>
+//               <th scope="col">Option</th>
+//               <th scope="col">Amount</th>
+//               <th scope="col"></th>
+//             </tr>
+//           </thead>
+//           <tbody>   
+//             {data.map((food, index) => (
+//               <tr key={index}>
+//                 <th scope="row">{index + 1}</th>
+//                 <td>{food.name}</td>
+//                 <td>{food.qty}</td>
+//                 <td>{food.size}</td>
+//                 <td>{food.price}</td>
+//                 <td>
+//                  <button type="button" className="btn p-0">
+//                     <img src={trash} alt="delete" onClick={() => { 
+//                         dispatch({ type: "Remove", index: index }); }} style={{height:"15px"}}/>
+//                   </button>{" "}
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+//         <div>
+//           <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
+//         </div>
+//         <div>
+//           <button className="btn bg-success mt-5 " onClick={handleCheckOut}>
+//             {" "}
+//             Check Out{" "}
+//           </button>
+//         </div>
+//       </div>
+
+//     </div>
+//   );
+// }
+
+
+
+
+
+
+
+
+
+
+
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
 
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-// import Axios from "../components/Axios"
-const baseURL= process.env.REACT_APP_API_URL;
+
+const baseURL = process.env.REACT_APP_API_URL;
 
 export default function Cart() {
+
   const notifyOrder = () => toast.success("Order placed successfully", {
     position: toast.POSITION.TOP_CENTER
   });
 
   let data = useCart();
-
   let dispatch = useDispatchCart();
+
   if (data.length === 0) {
     return (
-      <div>
-        <div className="m-5 w-100 text-center fs-3">The Cart is Empty!</div>
+      <div className="cart-wrapper">
+        <div className="empty-cart">The Cart is Empty!</div>
       </div>
     );
   }
+
   const handleCheckOut = async () => {
     try {
       let userEmail = localStorage.getItem("userEmail");
-      // console.log(userEmail);
+
       let response = await fetch(`${baseURL}/orderData`, {
         method: "POST",
         headers: {
@@ -37,23 +159,22 @@ export default function Cart() {
           order_date: new Date().toDateString(),
         }),
       });
-  
+
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
-  
+
       let json = await response.json();
-      // console.log("order response", json);
-  
+
       if (json.success) {
         dispatch({ type: "Drop" });
         notifyOrder();
-        // alert("Order submitted successfully");
       } else {
         alert("An error occurred while submitting the order");
       }
+
     } catch (error) {
-      console.log("Error occurred while checking out", error);
+      console.log("Error during checkout", error);
       alert("An error occurred while submitting the order");
     }
   };
@@ -61,49 +182,50 @@ export default function Cart() {
   let totalPrice = data.reduce((total, food) => total + food.price, 0);
 
   return (
-    <div>
-      {/* {console.log(data)} */}
-      <div className="container m-auto mt-5 table-responsive  table-responsive-sm table-responsive-md">
-        <table className="table table-hover ">
-          <thead className=" text-success fs-4">
+    <div className="cart-wrapper">
+      <div className="container m-auto mt-5 table-container">
+
+        <table className="glass-table">
+          <thead>
             <tr>
-              <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Quantity</th>
-              <th scope="col">Option</th>
-              <th scope="col">Amount</th>
-              <th scope="col"></th>
+              <th>#</th>
+              <th>Name</th>
+              <th>Qty</th>
+              <th>Option</th>
+              <th>Amount</th>
+              <th></th>
             </tr>
           </thead>
-          <tbody>   
+
+          <tbody>
             {data.map((food, index) => (
               <tr key={index}>
-                <th scope="row">{index + 1}</th>
+                <td>{index + 1}</td>
                 <td>{food.name}</td>
                 <td>{food.qty}</td>
                 <td>{food.size}</td>
-                <td>{food.price}</td>
+                <td>₹{food.price}</td>
                 <td>
-                 <button type="button" className="btn p-0">
-                    <img src={trash} alt="delete" onClick={() => { 
-                        dispatch({ type: "Remove", index: index }); }} style={{height:"15px"}}/>
-                  </button>{" "}
+                  <button className="delete-btn">
+                    <img
+                      src={trash}
+                      alt="delete"
+                      onClick={() => dispatch({ type: "Remove", index })}
+                    />
+                  </button>
                 </td>
               </tr>
             ))}
           </tbody>
         </table>
-        <div>
-          <h1 className="fs-2">Total Price: {totalPrice}/-</h1>
-        </div>
-        <div>
-          <button className="btn bg-success mt-5 " onClick={handleCheckOut}>
-            {" "}
-            Check Out{" "}
-          </button>
-        </div>
-      </div>
 
+        <div className="total-price">Total: ₹{totalPrice}/-</div>
+
+        <button className="checkout-btn" onClick={handleCheckOut}>
+          Check Out
+        </button>
+
+      </div>
     </div>
   );
 }
