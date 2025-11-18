@@ -11,7 +11,6 @@ import { useCart, useDispatchCart } from './ContextReducer';
 export default function Navbar() {
   const notifyLogout = () => { toast.warn("Logged out successfully") };
   const [cartView, setCartView] = useState(false)
-  // const [active, setActive] = useState("1");
   let data = useCart();
   let dispatch = useDispatchCart();
   const navigate = useNavigate();

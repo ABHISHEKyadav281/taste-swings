@@ -100,7 +100,6 @@ export default function Signup() {
         <h3 className="text-center mb-4">Create Account</h3>
 
         <form onSubmit={handleSubmit}>
-          {/* Name */}
           <div className="mb-3">
             <label htmlFor="inputName" className="form-label">Name</label>
             <input

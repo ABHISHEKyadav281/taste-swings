@@ -94,8 +94,6 @@ export default function MyOrder() {
     <div style={{position:'fixed',width:"100vw",zIndex:"10000"}}>
     <Navbar />
     </div>
-
-    {/* Background Gradient */}
     <div
       style={{
         minHeight: "72vh",

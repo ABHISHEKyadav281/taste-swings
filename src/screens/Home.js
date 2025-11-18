@@ -27,9 +27,6 @@ export default function Home() {
         loadData();
     }, [])
 
-
-
-
     return (
         <div>
             <div className='fs-4' style={{ width: "100%" }}>

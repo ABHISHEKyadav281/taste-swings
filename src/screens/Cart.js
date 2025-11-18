@@ -117,7 +117,6 @@
 
 
 
-
 import React from "react";
 import { useCart, useDispatchCart } from "../components/ContextReducer";
 import trash from "../screens/Trash.png";
