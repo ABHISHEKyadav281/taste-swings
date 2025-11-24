@@ -107,7 +107,6 @@
   opacity: 1;
 }
 
-/* Total price */
 .total-price {
   margin-top: 15px;
   font-size: 28px;
@@ -116,7 +115,6 @@
   opacity: 0.95;
 }
 
-/* Check Out Button (soft modern look) */
 .checkout-btn {
   margin-top: 25px;
   background: #3b3b3b;
